@@ -28,11 +28,3 @@ or
 ```
 yarn dev
 ```
-## Run Application in Production Mode
-```
-npm run start
-```
-or
-```
-yarn start
-```
