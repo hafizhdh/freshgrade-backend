@@ -12,6 +12,10 @@ or
 ```
 npm intall
 ```
+## Install local database in docker container
+```
+docker-compose up
+```
 ## Push New Schema in Database
 ```
 npx prisma db push
