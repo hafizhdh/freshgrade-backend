@@ -122,3 +122,37 @@ export const login = async (dto: LoginDTO): Promise<Tokens> => {
 
   return tokens;
 }
+
+interface ResponseUser {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export const getUserDetails = async (id: string): Promise<ResponseUser> => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: id
+    },
+    select: {
+      createdAt: true,
+      email: true,
+      firstName: true,
+      hash: false,
+      id: true,
+      lastName: true,
+      updatedAt: true,
+      username: true
+    }
+  })
+
+  if (!user) {
+    throw new HttpException(404, "User not found")
+  }
+
+  return user
+}

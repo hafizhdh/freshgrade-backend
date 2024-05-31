@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import * as AuthService from "./auth.service";
+import authVerification from "../../middleware/auth";
 
 const router = Router();
 
@@ -32,5 +33,29 @@ router.post('/signin', async (req: Request, res: Response) => {
     })
   }
 })
+
+/**
+ * Get User
+ */
+router.get('/user', authVerification, async (req: Request, res: Response) => {
+  const userId = req.userId
+  if (!userId) {
+    res.status(400).json({
+      code: 400,
+      message: "Invalid token"
+    })
+    return
+  }
+  try {
+    const user = await AuthService.getUserDetails(userId);
+    res.json(user)
+  } catch (error: any) {
+    res.status(error.errorCode).json({
+      code: error.errorCode,
+      message: error.message
+    })
+  }
+})
+
 
 export default router;
