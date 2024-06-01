@@ -14,7 +14,7 @@ npm intall
 ```
 ## Install local database in docker container
 ```
-docker-compose up
+docker-compose up -d
 ```
 ## Push New Schema in Database
 ```
@@ -23,6 +23,10 @@ npx prisma db push
 or
 ```
 yarn prisma db push
+```
+## Migrating database
+```
+npx prisma migrate dev
 ```
 ## Run Application in Development Mode
 ```
