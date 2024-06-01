@@ -24,6 +24,10 @@ or
 ```
 yarn prisma db push
 ```
+## Migrating database
+```
+npx prisma migrate dev
+```
 ## Run Application in Development Mode
 ```
 npm run dev
