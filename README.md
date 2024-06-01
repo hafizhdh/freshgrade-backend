@@ -14,7 +14,7 @@ npm intall
 ```
 ## Install local database in docker container
 ```
-docker-compose up
+docker-compose up -d
 ```
 ## Push New Schema in Database
 ```
